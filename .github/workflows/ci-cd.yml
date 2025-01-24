@@ -46,11 +46,16 @@ jobs:
 
       # Étape 6 : Construire l'image Docker
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mon-app:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/testspringcicdgithubaction:latest .
 
-      # Étape 7 : Pousser l'image Docker sur Docker Hub
+
+      # Étape 7 : Tager l'image Docker sur Docker Hub
+      - name: Tager Docker image to Docker Hub
+        run: docker tag testspringcicdgithubaction:latest ${{ secrets.DOCKER_USERNAME }}/testspringcicdgithubaction:latest
+
+      # Étape 8 : Pousser l'image Docker sur Docker Hub
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/mon-app:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/testspringcicdgithubaction:latest
 
   deploy:
     runs-on: ubuntu-latest
