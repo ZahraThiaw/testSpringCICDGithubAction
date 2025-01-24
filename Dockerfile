@@ -5,10 +5,10 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Étape 3 : Copier le JAR généré par Maven
-COPY target/mon-app.jar app.jar
+COPY . .
 
 # Étape 4 : Exposer le port utilisé par l'application
 EXPOSE 3000
 
 # Étape 5 : Commande pour lancer l'application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "target/testSpringCICDGithubAction-O.0.1-SNAPSHOT.jar"]
